@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { NavbarServer } from "@/components/navbar-server";
+import { RegisterServiceWorker } from "@/components/register-sw";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,6 +18,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Job Capture",
   description: "Upload and manage job document images",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Job Capture",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#4338ca",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -33,6 +47,7 @@ export default function RootLayout({
         <NavbarServer />
         <main className="flex-1">{children}</main>
         <Toaster />
+        <RegisterServiceWorker />
       </body>
     </html>
   );
