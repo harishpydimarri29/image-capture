@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Invoice Capture",
-  description: "Upload and manage invoice document images",
+  title: "Job Capture",
+  description: "Upload and manage job document images",
 };
 
 export default function RootLayout({

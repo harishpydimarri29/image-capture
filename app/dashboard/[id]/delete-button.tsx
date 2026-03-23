@@ -41,8 +41,8 @@ export function DeleteInvoiceButton({ invoiceId }: { invoiceId: string }) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="destructive" size="sm">
-          <Trash2 className="mr-1.5 h-4 w-4" />
-          Delete
+          <Trash2 className="h-4 w-4 sm:mr-1.5" />
+          <span className="hidden sm:inline">Delete</span>
         </Button>
       </DialogTrigger>
       <DialogContent>

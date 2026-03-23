@@ -86,11 +86,11 @@ export function EditInvoiceButton({ invoice }: { invoice: Invoice }) {
     >
       <DialogTrigger asChild>
         <Button variant="outline" size="sm">
-          <Pencil className="mr-1.5 h-4 w-4" />
-          Edit
+          <Pencil className="h-4 w-4 sm:mr-1.5" />
+          <span className="hidden sm:inline">Edit</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-lg">
+      <DialogContent className="max-h-[90dvh] max-w-lg overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Edit Invoice</DialogTitle>
         </DialogHeader>

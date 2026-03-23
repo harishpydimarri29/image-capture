@@ -13,8 +13,8 @@ export default async function SignupPage({
   const { error } = await searchParams
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4">
-      <Card className="w-full max-w-md">
+    <div className="flex min-h-[calc(100dvh-3.5rem)] items-center justify-center p-4">
+      <Card className="w-full max-w-sm sm:max-w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Create an account</CardTitle>
           <CardDescription>Enter your details to get started</CardDescription>

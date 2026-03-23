@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import { Upload, X, ImageIcon } from 'lucide-react'
+import { Upload, X, ImageIcon, CheckCircle, Plus } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -50,7 +50,7 @@ function ImageDropzone({
     return (
       <div className="relative rounded-lg border bg-muted/30 p-2">
         <p className="mb-2 text-sm font-medium">{label}</p>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-md">
+        <div className="relative aspect-[3/2] overflow-hidden rounded-md">
           <img
             src={URL.createObjectURL(file)}
             alt={label}
@@ -61,7 +61,7 @@ function ImageDropzone({
         <button
           type="button"
           onClick={onRemove}
-          className="absolute right-3 top-3 rounded-full bg-background/80 p-1 hover:bg-background"
+          className="absolute right-3 top-3 rounded-full bg-background/80 p-1.5 shadow-sm hover:bg-background"
         >
           <X className="h-4 w-4" />
         </button>
@@ -77,7 +77,7 @@ function ImageDropzone({
       }}
       onDragLeave={() => setDragActive(false)}
       onDrop={handleDrop}
-      className={`flex aspect-[4/3] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-6 transition-colors ${
+      className={`flex aspect-[3/2] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-4 transition-colors ${
         dragActive ? 'border-primary bg-primary/5' : 'border-muted-foreground/25 hover:border-muted-foreground/50'
       }`}
       onClick={() => document.getElementById(`file-${label}`)?.click()}
@@ -86,12 +86,15 @@ function ImageDropzone({
         id={`file-${label}`}
         type="file"
         accept="image/*"
+        capture="environment"
         className="hidden"
         onChange={handleFileInput}
       />
       <ImageIcon className="mb-2 h-8 w-8 text-muted-foreground" />
       <p className="text-sm font-medium">{label}</p>
-      <p className="mt-1 text-xs text-muted-foreground">Drag & drop or click to select</p>
+      <p className="mt-1 text-center text-xs text-muted-foreground">
+        Tap to capture or select
+      </p>
     </div>
   )
 }
@@ -107,6 +110,19 @@ export default function UploadPage() {
   const [profit, setProfit] = useState('')
   const [tags, setTags] = useState<string[]>([])
   const [submitting, setSubmitting] = useState(false)
+  const [success, setSuccess] = useState(false)
+
+  const resetForm = () => {
+    setFrontImage(null)
+    setBackImage(null)
+    setPhoneNumber('')
+    setDate('')
+    setRoute('')
+    setTotalAmount('')
+    setProfit('')
+    setTags([])
+    setSuccess(false)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -168,8 +184,8 @@ export default function UploadPage() {
         return
       }
 
+      setSuccess(true)
       toast.success('Invoice uploaded successfully!')
-      router.push('/dashboard')
     } catch {
       toast.error('An unexpected error occurred.')
     } finally {
@@ -177,20 +193,45 @@ export default function UploadPage() {
     }
   }
 
-  return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-semibold">Upload Invoice</h1>
-      <p className="mt-1 text-muted-foreground">
-        Upload front and back images of your invoice along with details.
-      </p>
+  if (success) {
+    return (
+      <div className="mx-auto flex max-w-lg flex-col items-center px-4 py-16 text-center">
+        <div className="rounded-full bg-primary/10 p-4">
+          <CheckCircle className="h-10 w-10 text-primary" />
+        </div>
+        <h2 className="mt-4 text-xl font-semibold">Invoice Uploaded</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Your invoice has been saved successfully.
+        </p>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Button onClick={resetForm}>
+            <Plus className="mr-2 h-4 w-4" />
+            Upload Another
+          </Button>
+          <Button variant="outline" onClick={() => router.push('/dashboard')}>
+            View Dashboard
+          </Button>
+        </div>
+      </div>
+    )
+  }
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+  return (
+    <div className="mx-auto max-w-2xl px-4 py-6 pb-24 sm:py-8">
+      <div className="mb-6">
+        <h1 className="text-xl font-semibold sm:text-2xl">Upload Invoice</h1>
+        <p className="mt-0.5 text-sm text-muted-foreground">
+          Capture front &amp; back images with details.
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-5">
         <Card>
-          <CardHeader>
-            <CardTitle>Document Images</CardTitle>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-base">Document Images</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-3">
               <ImageDropzone
                 label="Front Side"
                 file={frontImage}
@@ -198,7 +239,7 @@ export default function UploadPage() {
                 onRemove={() => setFrontImage(null)}
               />
               <ImageDropzone
-                label="Back Side (optional)"
+                label="Back (optional)"
                 file={backImage}
                 onFileSelect={setBackImage}
                 onRemove={() => setBackImage(null)}
@@ -208,15 +249,17 @@ export default function UploadPage() {
         </Card>
 
         <Card>
-          <CardHeader>
-            <CardTitle>Invoice Details</CardTitle>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-base">Invoice Details</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="phoneNumber">Phone Number</Label>
                 <Input
                   id="phoneNumber"
+                  type="tel"
+                  inputMode="tel"
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   placeholder="+91 98765 43210"
@@ -243,9 +286,9 @@ export default function UploadPage() {
               />
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label htmlFor="totalAmount">Total Amount (INR)</Label>
+                <Label htmlFor="totalAmount">Total (INR)</Label>
                 <div className="relative">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">
                     ₹
@@ -253,6 +296,7 @@ export default function UploadPage() {
                   <Input
                     id="totalAmount"
                     type="number"
+                    inputMode="decimal"
                     step="0.01"
                     min="0"
                     value={totalAmount}
@@ -271,6 +315,7 @@ export default function UploadPage() {
                   <Input
                     id="profit"
                     type="number"
+                    inputMode="decimal"
                     step="0.01"
                     value={profit}
                     onChange={(e) => setProfit(e.target.value)}
@@ -288,11 +333,13 @@ export default function UploadPage() {
           </CardContent>
         </Card>
 
-        <div className="flex justify-end gap-3">
-          <Button type="button" variant="outline" onClick={() => router.back()} disabled={submitting}>
-            Cancel
-          </Button>
-          <Button type="submit" disabled={submitting || !frontImage}>
+        <div className="fixed bottom-0 left-0 right-0 border-t bg-background p-4 sm:static sm:border-0 sm:bg-transparent sm:p-0">
+          <Button
+            type="submit"
+            className="w-full sm:w-auto"
+            size="lg"
+            disabled={submitting || !frontImage}
+          >
             {submitting ? (
               <>
                 <Upload className="mr-2 h-4 w-4 animate-pulse" />
