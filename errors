@@ -1,0 +1,256 @@
+pnpm run dev
+
+> image-capture@0.1.0 dev /Users/p0h043d/GitHub/harishpydimarri29/image-capture
+> next dev
+
+▲ Next.js 16.2.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.29.48:3000
+- Environments: .env.local
+✓ Ready in 258ms
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+⨯ ./app/login/page.tsx:3:1
+Module not found: Can't resolve '@/components/ui/card'
+  1 | import Link from 'next/link'
+  2 | import { login } from './actions'
+> 3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { Input } from '@/components/ui/input'
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+
+Import map: aliased to relative './components/ui/card' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./app/login/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/input'
+  2 | import { login } from './actions'
+  3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+> 4 | import { Input } from '@/components/ui/input'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+  7 |
+
+Import map: aliased to relative './components/ui/input' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./app/login/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/label'
+  3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+  4 | import { Input } from '@/components/ui/input'
+> 5 | import { Label } from '@/components/ui/label'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '@/components/ui/button'
+  7 |
+  8 | export default async function LoginPage({
+
+Import map: aliased to relative './components/ui/label' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./app/layout.tsx:3:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  1 | import type { Metadata } from "next";
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+> 3 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavbarServer } from "@/components/navbar-server";
+  5 | import "./globals.css";
+  6 |
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ GET /login 500 in 179ms (next.js: 51ms, proxy.ts: 72ms, application-code: 55ms)
+[browser] Uncaught Error: ./app/login/page.tsx:3:1
+Module not found: Can't resolve '@/components/ui/card'
+  1 | import Link from 'next/link'
+  2 | import { login } from './actions'
+> 3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { Input } from '@/components/ui/input'
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+
+Import map: aliased to relative './components/ui/card' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./app/login/page.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./app/login/page.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./app/login/page.tsx:3:1
+Module not found: Can't resolve '@/components/ui/card'
+  1 | import Link from 'next/link'
+  2 | import { login } from './actions'
+> 3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { Input } from '@/components/ui/input'
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+
+Import map: aliased to relative './components/ui/card' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/login/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/input'
+  2 | import { login } from './actions'
+  3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+> 4 | import { Input } from '@/components/ui/input'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+  7 |
+
+Import map: aliased to relative './components/ui/input' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/login/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/label'
+  3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+  4 | import { Input } from '@/components/ui/input'
+> 5 | import { Label } from '@/components/ui/label'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '@/components/ui/button'
+  7 |
+  8 | export default async function LoginPage({
+
+Import map: aliased to relative './components/ui/label' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/layout.tsx:3:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  1 | import type { Metadata } from "next";
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+> 3 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavbarServer } from "@/components/navbar-server";
+  5 | import "./globals.css";
+  6 |
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/login/page.tsx:3:1
+Module not found: Can't resolve '@/components/ui/card'
+  1 | import Link from 'next/link'
+  2 | import { login } from './actions'
+> 3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { Input } from '@/components/ui/input'
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+
+Import map: aliased to relative './components/ui/card' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/login/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/input'
+  2 | import { login } from './actions'
+  3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+> 4 | import { Input } from '@/components/ui/input'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+  7 |
+
+Import map: aliased to relative './components/ui/input' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/login/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/label'
+  3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+  4 | import { Input } from '@/components/ui/input'
+> 5 | import { Label } from '@/components/ui/label'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '@/components/ui/button'
+  7 |
+  8 | export default async function LoginPage({
+
+Import map: aliased to relative './components/ui/label' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/layout.tsx:3:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  1 | import type { Metadata } from "next";
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+> 3 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavbarServer } from "@/components/navbar-server";
+  5 | import "./globals.css";
+  6 |
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/login/page.tsx:3:1
+Module not found: Can't resolve '@/components/ui/card'
+  1 | import Link from 'next/link'
+  2 | import { login } from './actions'
+> 3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { Input } from '@/components/ui/input'
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+
+Import map: aliased to relative './components/ui/card' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/login/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/input'
+  2 | import { login } from './actions'
+  3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+> 4 | import { Input } from '@/components/ui/input'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { Label } from '@/components/ui/label'
+  6 | import { Button } from '@/components/ui/button'
+  7 |
+
+Import map: aliased to relative './components/ui/input' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/login/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/label'
+  3 | import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+  4 | import { Input } from '@/components/ui/input'
+> 5 | import { Label } from '@/components/ui/label'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Button } from '@/components/ui/button'
+  7 |
+  8 | export default async function LoginPage({
+
+Import map: aliased to relative './components/ui/label' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./app/layout.tsx:3:1
+Module not found: Can't resolve '@/components/ui/sonner'
+  1 | import type { Metadata } from "next";
+  2 | import { Geist, Geist_Mono } from "next/font/google";
+> 3 | import { Toaster } from "@/components/ui/sonner";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavbarServer } from "@/components/navbar-server";
+  5 | import "./globals.css";
+  6 |
+
+Import map: aliased to relative './components/ui/sonner' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found
