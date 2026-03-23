@@ -40,7 +40,7 @@ function ImageDropzone({
   const handleFileInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const selected = e.target.files?.[0]
-      if (selected) {
+      if (selected && selected.type.startsWith('image/')) {
         onFileSelect(selected)
       }
     },
@@ -71,7 +71,8 @@ function ImageDropzone({
   }
 
   return (
-    <div
+    <label
+      htmlFor={`file-${label}`}
       onDragOver={(e) => {
         e.preventDefault()
         setDragActive(true)
@@ -81,13 +82,12 @@ function ImageDropzone({
       className={`flex aspect-[4/3] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-4 transition-colors ${
         dragActive ? 'border-primary bg-primary/5' : 'border-muted-foreground/25 hover:border-muted-foreground/50'
       }`}
-      onClick={() => document.getElementById(`file-${label}`)?.click()}
     >
       <input
         id={`file-${label}`}
         type="file"
-        accept="image/*"
-        className="hidden"
+        capture="environment"
+        className="sr-only"
         onChange={handleFileInput}
       />
       <Upload className="mb-2 h-8 w-8 text-muted-foreground" />
@@ -95,7 +95,7 @@ function ImageDropzone({
       <p className="mt-1 text-center text-xs text-muted-foreground">
         Tap to capture or select
       </p>
-    </div>
+    </label>
   )
 }
 
