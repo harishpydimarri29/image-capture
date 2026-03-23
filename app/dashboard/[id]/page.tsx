@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { DeleteInvoiceButton } from './delete-button'
+import { EditInvoiceButton } from './edit-invoice'
 
 function formatCurrency(value: number | null) {
   if (value === null || value === undefined) return '-'
@@ -48,7 +49,10 @@ export default async function InvoiceDetailPage({
             Back to Dashboard
           </Link>
         </Button>
-        <DeleteInvoiceButton invoiceId={invoice.id} />
+        <div className="flex items-center gap-2">
+          <EditInvoiceButton invoice={invoice} />
+          <DeleteInvoiceButton invoiceId={invoice.id} />
+        </div>
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
